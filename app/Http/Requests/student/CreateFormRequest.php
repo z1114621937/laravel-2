@@ -26,6 +26,7 @@ class CreateFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'form_id'=>'required',
             'applicant_name'=>'required',
             'type_id'=>'required',
         ];

@@ -26,7 +26,7 @@ class UpdateLabrunRequest extends FormRequest
     public function rules()
     {
         return [
-            'records_id'=>'required',
+            'form_id'=>'required',
             'laboratory_id'=>'required',
             'week'=>'required',
             'time'=>'required',

@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests\student;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class DeleteLabrunRequest extends FormRequest
+class ReturnEquipmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,11 +24,8 @@ class DeleteLabrunRequest extends FormRequest
     public function rules()
     {
         return [
-            'form_id'=>'required',
+            'equipment_id'=>'required',
+            'info'=>'required',
         ];
-    }
-    protected function failedValidation(Validator $validator)
-    {
-        throw (new HttpResponseException(json_fail('参数错误!',$validator->errors()->all(),422)));
     }
 }

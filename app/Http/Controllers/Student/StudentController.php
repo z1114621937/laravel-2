@@ -19,9 +19,9 @@ class StudentController extends Controller
      */
     public function SelectStudent(SelectStudentRequest $request)
     {
-        $stuid=$request['stuid'];
-        $password=$request['password'];
-        $res = Student::oys_SelectStudent($stuid,$password);
+        $student_id=$request['student_id'];
+        $student_password=$request['student_password'];
+        $res = Student::SelectStudent($student_id,$student_password);
         return $res ?  //判断
             json_success("查询成功",$res,200):
             json_fail("查询失败",NULL,100);

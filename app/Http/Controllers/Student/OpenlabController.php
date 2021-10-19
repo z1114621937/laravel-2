@@ -25,7 +25,7 @@ class OpenlabController extends Controller
      */
     public function OpenlabBorrow(OpenlabBorrowRequest $request)
     {
-        $form_id=$request['form_id'];
+        $form_id='t4'.date("ymjHis");
         $reason_use=$request['reason_use'];
         $porject_name=$request['porject_name'];
         $start_time=$request['start_time'];

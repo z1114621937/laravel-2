@@ -26,7 +26,6 @@ class AddLabrunRequest extends FormRequest
     public function rules()
     {
         return [
-            'form_id'=>'required',
             'laboratory_id'=>'required',
             'week'=>'required',
             'time'=>'required',

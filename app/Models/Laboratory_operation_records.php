@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratory_operation_records extends Model
 {
     protected $table='laboratory_operation_records';
-    protected $primaryKey='records_id';
+    protected $primaryKey='form_id';
     public  $timestamps=true;
     protected $guarded = [];
 
@@ -61,11 +61,11 @@ class Laboratory_operation_records extends Model
      * @param $records_id
      * @return false
      */
-    public static function DeleteEquipment($records_id)
+    public static function DeleteEquipment($form_id)
     {
         try {
             //设备表成功
-            $res=self::where('records_id',$records_id)->delete();
+            $res=self::where('form_id',$form_id)->delete();
             return $res;
         }catch (\Exception $e){
             logError('运行记录删除成功',[$e->getMessage()]);
@@ -92,10 +92,10 @@ class Laboratory_operation_records extends Model
      * @param $remark
      * @return false
      */
-    public static function UpdateLabrun($records_id,$laboratory_id,$week,$time,$class_id,$number,$class_name,$class_type,$teacher,$situation,$remark)
+    public static function UpdateLabrun($form_id,$laboratory_id,$week,$time,$class_id,$number,$class_name,$class_type,$teacher,$situation,$remark)
     {
         try {
-            $res=self::where('records_id',$records_id)->
+            $res=self::where('form_id',$form_id)->
             update([
                 'laboratory_id'=>$laboratory_id,
                 'week'=>$week,

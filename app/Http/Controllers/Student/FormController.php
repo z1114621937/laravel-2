@@ -25,10 +25,11 @@ class FormController extends Controller
      */
     public function  CreateForm(CreateFormRequest $request)
     {
+        $form_id=$request['form_id'];
         $applicant_name=$request['applicant_name'];
         $type_id=$request['type_id'];
         $form_status=1;
-        $res = Form::CreateForm($applicant_name,$type_id,$form_status);
+        $res = Form::CreateForm($form_id,$applicant_name,$type_id,$form_status);
         return $res ?  //判断
             json_success("表单创建成功",$res,200):
             json_fail("表单创建失败",NULL,100);

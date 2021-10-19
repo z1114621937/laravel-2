@@ -8,13 +8,20 @@ use App\Http\Requests\student\AddEquipmentRequest;
 use App\Http\Requests\student\DeleteEquipmentRequest;
 use App\Http\Requests\student\EquipmentBorrowRequest;
 use App\Http\Requests\student\EquipmentBorrowUpdateRequest;
+use App\Http\Requests\student\ReturnEquipmentRequest;
 use App\Http\Requests\student\SelectEquipmenlistRequest;
 use App\Http\Requests\student\SelectEquipment_borrowRequest;
+use App\Http\Requests\student\SelectReturnEquipmentRequest;
 use App\Http\Requests\student\UpdateEquipmentRequest;
 use App\Models\Equipment;
 use App\Models\Equipment_borrow;
 use App\Models\Equipment_borrow_checklist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+
+
+
 
 /*
  * 实验室设备表
@@ -30,7 +37,7 @@ class EquipmentController extends Controller
      */
     public function EquipmentBorrow(EquipmentBorrowRequest $request)
     {
-        $form_id=$request['form_id'];
+        $form_id='t1'.date("ymjHis");
         $borrow_department=$request['borrow_department'];
         $borrow_application=$request['borrow_application'];
         $destine_start_time=$request['destine_start_time'];
@@ -209,7 +216,7 @@ class EquipmentController extends Controller
      * @param
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ReturnEquipment(Request $request)
+    public function ReturnEquipment(ReturnEquipmentRequest $request)
     {
         $equipment_id=$request['equipment_id'];
         $info=$request['info'];

@@ -20,7 +20,7 @@ class LabloanController extends Controller
      */
     public function LabBorrow(LabBorrowRequest $request)
     {
-        $form_id=$request['form_id'];
+        $form_id='t2'.date("ymjHis");
         $laboratory_id=$request['laboratory_id'];
         $course_name=$request['course_name'];
         $class_id=$request['class_id'];

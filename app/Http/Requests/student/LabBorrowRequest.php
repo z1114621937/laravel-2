@@ -26,7 +26,6 @@ class LabBorrowRequest extends FormRequest
     public function rules()
     {
         return [
-            'form_id'=>'required',
             'laboratory_id'=>'required',
             'course_name'=>'required',
             'class_id'=>'required',

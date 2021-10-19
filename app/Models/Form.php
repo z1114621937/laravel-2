@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Form extends Model
 {
     protected $table='form';
-    protected $primaryKey='form_id';
+   // protected $primaryKey='form_id';
     public  $timestamps= true;
     protected $guarded = [];
 
@@ -20,12 +20,13 @@ class Form extends Model
      * @param $form_status
      * @return false
      */
-    public static function CreateForm($applicant_name,$type_id,$form_status)
+    public static function CreateForm($form_id,$applicant_name,$type_id,$form_status)
     {
         try {
             //申请表创建成功
             $res=self::create(
                 [
+                    'form_id'=>$form_id,
                     'applicant_name'=>$applicant_name,
                     'type_id'=>$type_id,
                     'form_status'=>$form_status,

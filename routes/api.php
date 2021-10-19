@@ -99,7 +99,7 @@ Route::prefix('student')->group(function () {
 
     //设备归还信息查看
     Route::get('selectreturnequipment', 'Student\EquipmentController@SelectReturnEquipment'); //设备归还的信息查看
-    Route::post('returnequipment', 'Student\EquipmentController@ReturnEquipment'); //设备归还的信息查看
+    Route::post('returnequipment', 'Student\EquipmentController@ReturnEquipment'); //归还设备
 
 
     Route::post('select', 'Student\StudentController@SelectStudent'); //学生负责人个人信息查看  1

@@ -26,8 +26,8 @@ class SelectStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'stuid'=>'required',
-            'password'=>'required',
+            'student_id'=>'required',
+            'student_password'=>'required',
         ];
     }
     protected function failedValidation(Validator $validator)

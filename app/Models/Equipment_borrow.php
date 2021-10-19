@@ -14,7 +14,6 @@ class Equipment_borrow extends Model
     /**
      * 学生填写设备借用表
      * @author oys
-     * @param $form_id
      * @param $borrow_department
      * @param $borrow_application
      * @param $destine_start_time

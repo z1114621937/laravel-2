@@ -22,7 +22,7 @@ class LabrunController extends Controller
      */
     public function AddLabrun(AddLabrunRequest $request)
     {
-        $form_id=$request['form_id'];
+        $form_id='t3'.date("ymjHis");
         $laboratory_id=$request['laboratory_id'];
         $week=$request['week'];
         $time=$request['time'];
@@ -49,8 +49,8 @@ class LabrunController extends Controller
      */
     public function DeleteLabrun(DeleteLabrunRequest $request)
     {
-        $records_id=$request['records_id'];
-        $res = Laboratory_operation_records::DeleteEquipment($records_id);
+        $form_id=$request['form_id'];
+        $res = Laboratory_operation_records::DeleteEquipment($form_id);
         return $res ?
             json_success("删除成功",$res,200):
             json_fail("删除失败",NULL,100);
@@ -66,7 +66,7 @@ class LabrunController extends Controller
      */
     public function UpdateLabrun(UpdateLabrunRequest $request)
     {
-        $records_id=$request['records_id'];
+        $form_id=$request['form_id'];
         $laboratory_id=$request['laboratory_id'];
         $week=$request['week'];
         $time=$request['time'];
@@ -77,7 +77,7 @@ class LabrunController extends Controller
         $teacher=$request['teacher'];
         $situation=$request['situation'];
         $remark=$request['remark'];
-        $res = Laboratory_operation_records::UpdateLabrun($records_id,$laboratory_id,$week,$time,$class_id,$number,$class_name,$class_type,$teacher,$situation,$remark);
+        $res = Laboratory_operation_records::UpdateLabrun($form_id,$laboratory_id,$week,$time,$class_id,$number,$class_name,$class_type,$teacher,$situation,$remark);
         return $res ?
             json_success("修改成功",$res,200):
             json_fail("修改失败",NULL,100);

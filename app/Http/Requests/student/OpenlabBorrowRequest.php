@@ -26,7 +26,6 @@ class OpenlabBorrowRequest extends FormRequest
     public function rules()
     {
         return [
-            'form_id'=>'required',
             'reason_use'=>'required',
             'porject_name'=>'required',
             'start_time'=>'required',
