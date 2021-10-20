@@ -52,4 +52,15 @@ Route::middleware('ordinadmin.check')->prefix('test11')->group(function (){
  */
 Route::middleware('superadmin.check')->prefix('test22')->group(function (){
     Route::post('superadmin','Login\LoginController@superadmin');
+    Route::post('superadmin','AdminController@add');
+
 });
+
+
+//测试
+Route::post('ss','StudentController@add');//学生添加（完成）
+Route::post('sss','StudentController@modify');//学生修改（完成）
+Route::post('sss1','StudentController@delete');//学生删除
+Route::post('sss2','StudentController@show');//学生查询（完成）
+
+Route::post('aaa','Equipment\Equipment_borrow_checklistController@show');

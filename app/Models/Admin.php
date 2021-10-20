@@ -51,6 +51,10 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
         }
     }
 
+
+
+
+
     /**
      * 存储基本信息表
      * @param $request
@@ -128,3 +132,8 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
     }
 
 }
+
+
+
+
+
