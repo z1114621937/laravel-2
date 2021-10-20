@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SuperadminRequest;
 use App\Models\Superadmin;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,10 @@ class SuperadminController extends Controller
     /***
      * yjx
      * 查看超管信息
-     * @param Request $request
+     * @param SuperadminRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request){
+    public function show(SuperadminRequest $request){
         $account = $request['account'];
         $res = Superadmin::show($account);
 

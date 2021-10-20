@@ -8,12 +8,7 @@ use Illuminate\Http\Request;
 
 class Equipment_borrow_checklistController extends Controller
 {
-    /**
-     * yjx
-     * 查询设备归还记录
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function show(Request $request){
         $checklist_id = $request['checklist_id'];
         $res = Equipment_borrow_checklist::show($checklist_id);

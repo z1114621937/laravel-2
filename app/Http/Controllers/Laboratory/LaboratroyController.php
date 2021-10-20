@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Laboratory;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LaboratoryRequest;
 use App\Models\Laboratory;
 use Illuminate\Http\Request;
 
 class LaboratroyController extends Controller
 {
-    /***
+    /**
      * yjx
      * 查看实验室
-     * @param Request $request
+     * @param LaboratoryRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request){
+    public function show(LaboratoryRequest $request){
         $laboratory_id = $request['laboratory_id'];
         /*$laboratory_name = $request['laboratory_name'];
         $place = $request['place'];

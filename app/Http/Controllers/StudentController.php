@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
+    /***
      * yjx
-     * 增加
-     * @param Request $request
+     * 增加学生
+     * @param StudentRequest $request
      * @return JsonResponse
+     *
      */
-    public function add(Request $request){
+    public function add(StudentRequest $request){
         $student_id = $request['student_id'];
         $student_password = $request['student_password'];
         $student_name = $request['student_name'];
@@ -37,11 +39,12 @@ class StudentController extends Controller
 
     /**
      * yjx
-     * 修改
-     * @param Request $request
+     * 修改学生
+     * @param StudentRequest $request
      * @return JsonResponse
+     *
      */
-    public function modify(Request $request){
+    public function modify(StudentRequest $request){
        // $stuid1 = $request['stuid1'];
         $student_id = $request['student_id'];
         $student_password = $request['student_password'];
@@ -64,11 +67,12 @@ class StudentController extends Controller
 
     /**
      * yjx
-     * 删除
-     * @param Request $request
+     * 删除学生
+     * @param StudentRequest $request
      * @return JsonResponse
+     *
      */
-    public function delete(Request $request)
+    public function delete(StudentRequest $request)
     {
 
         $student_id = $request['student_id'];
@@ -80,13 +84,13 @@ class StudentController extends Controller
 
     }
 
-    /**
+    /***
      * yjx
-     * 查询
-     * @param Request $request
+     * 查询学生
+     * @param StudentRequest $request
      * @return JsonResponse
      */
-    public function show(Request $request){
+    public function show(StudentRequest $request){
         $student_id = $request['student_id'];
         $res = Student::show($student_id);
 

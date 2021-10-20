@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
@@ -9,10 +10,11 @@ class AdminController extends Controller
 {
     /***
      * yjx
-     * @param Request $request
+     * 添加管理员
+     * @param AdminRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function add(Request $request){
+    public function add(AdminRequest $request){
         $id = $request['id'];
         $password = $request['password'];
         $name = $request['name'];
@@ -36,11 +38,11 @@ class AdminController extends Controller
 
     /***
      * yjx
-     * 修改
-     * @param Request $request
+     * 修改管理员
+     * @param AdminRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function modify(Request $request){
+    public function modify(AdminRequest $request){
         $id = $request['id'];
         $password = $request['password'];
         $name = $request['name'];
@@ -65,11 +67,12 @@ class AdminController extends Controller
 
     /***
      * yjx
-     * 管理员删除
-     * @param Request $request
+     * 删除管理员
+     * @param AdminRequest $request
      * @return \Illuminate\Http\JsonResponse
+     *
      */
-    public function delete(Request $request){
+    public function delete(AdminRequest $request){
         $id = $request['id'];
         $res1 = Admin::delete1($id);
 
@@ -81,11 +84,11 @@ class AdminController extends Controller
 
     /***
      * yjx
-     * 管理员查询
-     * @param Request $request
+     * 查询管理员
+     * @param AdminRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request){
+    public function show(AdminRequest $request){
         $id = $request['id'];
         $res1 = Admin::show($id);
 

@@ -75,6 +75,7 @@ Route::post('aaa2','Equipment\EquipmentCangController@show');//器材查询
 
 Route::post('dd','Equipment\Equipment_borrowController@show');//借出器材查询(完成)
 
+Route::post('gg','Equipment\EquipmentReturnController@changestatus');//器材归还状态改变
 
 Route::post('ee','Laboratory\LaboratroyController@show');//实验室查询(完成)
 

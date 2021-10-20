@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Equipment;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EquipmentCangRequest;
 use Illuminate\Http\Request;
 use App\Models\EquipmentCang;
 class EquipmentCangController extends Controller
 {
-    /**
+    /***
      * yjx
      * 增加实验器材
-     * @param Request $request
+     * @param EquipmentCangRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function add(Request $request){
@@ -38,11 +39,11 @@ class EquipmentCangController extends Controller
 
     /***
      * yjx
-     * 器材修改
-     * @param Request $request
+     * 修改器材
+     * @param EquipmentCangRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function modify(Request $request){
+    public function modify(EquipmentCangRequest $request){
         $equipment_id = $request['equipment_id'];
         $equipment_name = $request['equipment_name'];
         $model = $request['model'];
@@ -69,10 +70,10 @@ class EquipmentCangController extends Controller
     /***
      * yjx
      * 删除器材
-     * @param Request $request
+     * @param EquipmentCangRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request)
+    public function delete(EquipmentCangRequest $request)
     {
         $equipement_id = $request['equipement_id'];
         $res = EquipmentCang::delete1($equipement_id);
@@ -84,11 +85,11 @@ class EquipmentCangController extends Controller
 
     /***
      * yjx
-     *查询器材
-     * @param Request $request
+     * 查询器材
+     * @param EquipmentCangRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request)
+    public function show(EquipmentCangRequest $request)
     {
         $equipement_id = $request['equipement_id'];
         $res = EquipmentCang::show($equipement_id);

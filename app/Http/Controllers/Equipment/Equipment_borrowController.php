@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Equipment;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Equipment_borrowRequest;
 use App\Models\Equipment_borrow;
 use Illuminate\Http\Request;
 
 class Equipment_borrowController extends Controller
 {
-    /**
+
+    /****
      * yjx
-     * 查询器材借出记录
-     * @param Request $request
+     * 查询借出设备
+     * @param Equipment_borrowRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request){
+    public function show(Equipment_borrowRequest $request){
         $form_id = $request['form_id'];
         $res = Equipment_borrow::show($form_id);
         return $res ?
