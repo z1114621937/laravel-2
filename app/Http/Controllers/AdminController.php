@@ -14,19 +14,19 @@ class AdminController extends Controller
      */
     public function add(Request $request){
         $id = $request['id'];
-       /* $password = $request['password'];
+        $password = $request['password'];
         $name = $request['name'];
         $phone = $request['phone'];
         $email = $request['email'];
-        $type = $request['type'];*/
+        $type = $request['type'];
 
-        $res1 = Admin::createUser(
-            $id
-           /* $password,
+        $res1 = Admin::establish(
+            $id,
+            $password,
             $name,
             $phone,
             $email,
-            $type*/
+            $type
         );
         return $res1?
             json_success("操作成功",null,200):
@@ -41,7 +41,6 @@ class AdminController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function modify(Request $request){
-        $id1 = $request['id1'];
         $id = $request['id'];
         $password = $request['password'];
         $name = $request['name'];
@@ -51,7 +50,6 @@ class AdminController extends Controller
 
 
         $res1 = Admin::modify(
-            $id1,
             $id,
             $password,
             $name,
@@ -63,10 +61,17 @@ class AdminController extends Controller
             json_success("操作成功",$res1,200):
             json_fail("操作失败",$res1,100);
     }
-    //删除
-    public function delate(Request $request){
+
+
+    /***
+     * yjx
+     * 管理员删除
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete(Request $request){
         $id = $request['id'];
-        $res1 = Admin::delate($id);
+        $res1 = Admin::delete1($id);
 
         return $res1?
             json_success("操作成功",$res1,200):
@@ -74,7 +79,12 @@ class AdminController extends Controller
 
     }
 
-    //查询
+    /***
+     * yjx
+     * 管理员查询
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show(Request $request){
         $id = $request['id'];
         $res1 = Admin::show($id);

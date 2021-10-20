@@ -19,7 +19,7 @@ class Equipment_borrow extends Model
      */
     public static function show($form_id){
         try {
-            $res = self::where('form_id','=',$form_id)->get();
+            $res = Equipment_borrow::where('form_id','=',$form_id)->get();
             return $res?
                 $res:
                 false;

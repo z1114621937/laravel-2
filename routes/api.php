@@ -60,7 +60,22 @@ Route::middleware('superadmin.check')->prefix('test22')->group(function (){
 //测试
 Route::post('ss','StudentController@add');//学生添加（完成）
 Route::post('sss','StudentController@modify');//学生修改（完成）
-Route::post('sss1','StudentController@delete');//学生删除
+Route::post('sss1','StudentController@delete');//学生删除(完成)
 Route::post('sss2','StudentController@show');//学生查询（完成）
 
-Route::post('aaa','Equipment\Equipment_borrow_checklistController@show');
+Route::post('cc','AdminController@add');//管理员添加（完成）
+Route::post('cc1','AdminController@modify');//管理员改变（完成）
+Route::post('cc2','AdminController@delete');//管理员删除(完成)
+Route::post('cc3','AdminController@show');//管理员查询(完成)
+
+Route::post('aa1','Equipment\EquipmentCangController@add');//器材添加
+Route::post('aaa3','Equipment\EquipmentCangController@modify');//器材修改
+Route::post('aaa1','Equipment\EquipmentCangController@delete');//器材删除
+Route::post('aaa2','Equipment\EquipmentCangController@show');//器材查询
+
+Route::post('dd','Equipment\Equipment_borrowController@show');//借出器材查询(完成)
+
+
+Route::post('ee','Laboratory\LaboratroyController@show');//实验室查询(完成)
+
+Route::post('ff','SuperadminController@show');//超管查询(完成)

@@ -10,6 +10,7 @@ class EquipmentCang extends Model
     protected $table = "equipment";
     public $timestamps = true;
     protected $primaryKey = "equipment_id";
+    protected $fillable = ['equipment_id','equipemnt_name','model','number','annex','status','info'];
     protected $guarded = [];
 
 
@@ -34,8 +35,9 @@ class EquipmentCang extends Model
         $status,
         $info
     ){
+
         try {
-            $res = self::create(
+            $res = EquipmentCang::create(
                 [
                     $equipment_id=>'equipment_id',
                     $equipment_name=>'equipment_name',
@@ -75,7 +77,7 @@ class EquipmentCang extends Model
                                   $status,
                                   $info){
         try {
-            $res = self::where('equipment_id',$equipment_id)->update(
+            $res = EquipmentCang::where('equipment_id','=',$equipment_id)->update(
                 [
                     //$equipment_id=>'equipment_id',
                     $equipment_name=>'equipment_name',
@@ -101,9 +103,9 @@ class EquipmentCang extends Model
      * @param $equipment_id
      * @return false
      */
-    public static function delate($equipment_id){
+    public static function delete1($equipment_id){
         try {
-            $res = Student::where('equipment_id','=',$equipment_id)->delate();
+            $res = EquipmentCang::where('equipment_id','=',$equipment_id)->delete();
             return $res ?
                 $res :
                 false;
@@ -122,7 +124,7 @@ class EquipmentCang extends Model
      */
     public static function show($equipment_id){
         try {
-            $res = Student::where('equipment_id','=',$equipment_id)->get();
+            $res = EquipmentCang::where('equipment_id','=',$equipment_id)->get();
             return $res ?
                 $res :
                 false;

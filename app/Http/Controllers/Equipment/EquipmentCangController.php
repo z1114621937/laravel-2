@@ -72,10 +72,10 @@ class EquipmentCangController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delate(Request $request)
+    public function delete(Request $request)
     {
         $equipement_id = $request['equipement_id'];
-        $res = EquipmentCang::delate($equipement_id);
+        $res = EquipmentCang::delete1($equipement_id);
         return $res ?
             json_success("操作成功", $res, 200) :
             json_fail("操作失败", $res, 100);
