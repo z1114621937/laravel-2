@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipment_borrow extends Model
 {
+
+    protected $table = "equipment_borrow";
+    public $timestamps = true;
+    protected $primaryKey = "form_id";
+    protected $guarded = [];
+
+    /***
+     * yjx
+     * 查询借出记录
+     * @param $form_id
+     * @return false
+     */
+    public static function show($form_id){
+        try {
+            $res = Equipment_borrow::where('form_id','=',$form_id)->get();
+            return $res?
+                $res:
+                false;
+
+        }catch (\Exception $e ){
+            logError('添加错误', [$e->getMessage()]);
+
     protected $table='equipment_borrow';
     // protected $primaryKey='form_id';
     public  $timestamps=true;
@@ -57,9 +79,12 @@ class Equipment_borrow extends Model
             return $res;
         }catch (\Exception $e){
             logError('设备借用表查看成功',[$e->getMessage()]);
+
             return false;
         }
     }
+
+
 
 
     /**
@@ -91,5 +116,6 @@ class Equipment_borrow extends Model
             return false;
         }
     }
+
 
 }

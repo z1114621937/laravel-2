@@ -13,8 +13,9 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
 
     public $table = 'admin';
     protected $remeberTokenName = NULL;
+    public $timestamps = false;
     protected $guarded = [];
-    protected $fillable = [ 'password', 'name', 'phone','email','account','type'];
+    protected $fillable = [ 'password', 'name', 'phone','email','id','type'];
     protected $hidden = [
         'password',
     ];
@@ -50,6 +51,10 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
             return false;
         }
     }
+
+
+
+
 
     /**
      * 存储基本信息表
@@ -127,4 +132,128 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
         return $this->attributes[$identifier_name];
     }
 
+    /***
+     * yjx
+     * 增加管理员
+     * @param $id
+     * @param $password
+     * @param $name
+     * @param $phone
+     * @param $email
+     * @param $type
+     * @return false
+     */
+    public static function establish( $id,
+                                      $password,
+                                      $name,
+                                      $phone,
+                                      $email,
+                                      $type
+  )
+    {
+        try {
+
+            $res = self::insert(
+                [
+                    'id' => $id,
+                    'password'=>$password,
+                    'name'=>$name,
+                    'phone'=>$phone,
+                    'email'=>$email,
+                    'type'=>$type,
+                ]);
+            return $res ?
+                $res :
+                false;
+        }catch (\Exception $e ){
+            logError('增加错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
+    /***
+     * yjx
+     * 修改管理员
+     * @param $id
+     * @param $password
+     * @param $name
+     * @param $phone
+     * @param $email
+     * @param $type
+     * @return false
+     */
+    public static function modify($id,$password,$name,$phone,$email,$type){
+        try {
+            $res =Admin::where('id','=',$id)->update(
+                [
+                    //'stuid' => $stuid,
+                    'password'=>$password,
+                    'name'=>$name,
+                    'phone'=>$phone,
+                    'email'=>$email,
+                    'type'=>$type,
+                ]
+            );
+            return $res?
+                $res:
+                false;
+
+        }catch (\Exception $e){
+            logError('修改错误', [$e->getMessage()]);
+            return false;
+        }
+
+    }
+
+    /***
+     * yjx
+     * 删除管理员
+     * @param $id
+     * @return false
+     */
+    public static function delete1($id)
+    {
+        try {
+            $res = Admin::where('id','=',$id)->delete();
+            return $res ?
+                $res :
+                false;
+
+        }catch (\Exception $e){
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
+    public static function show($id)
+    {
+        try {
+            $res = Admin::where('id', $id)->get();
+            return $res ?
+                $res :
+                false;
+
+        } catch (\Exception $e) {
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
