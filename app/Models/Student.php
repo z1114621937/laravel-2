@@ -233,4 +233,22 @@ class Student extends \Illuminate\Foundation\Auth\User implements JWTSubject,Aut
         return $this->attributes[$identifier_name];
     }
 
+
+    /**
+     * oys
+     * 查询学生负责人个人信息
+     * @param $stuid
+     * @param $password
+     * @return false
+     */
+    public static function SelectStudent($student_id,$student_password){
+        try {
+            $res = Student::where('student_id',$student_id)->where('student_password',$student_password)->first();
+            return $res;
+        }catch (\Exception $e){
+            logError('获取学生负责人个人信息失败',[$e->getMessage()]);
+            return false;
+        }
+    }
+
 }
