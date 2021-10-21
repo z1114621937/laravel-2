@@ -52,8 +52,112 @@ Route::middleware('ordinadmin.check')->prefix('test11')->group(function (){
  */
 Route::middleware('superadmin.check')->prefix('test22')->group(function (){
     Route::post('superadmin','Login\LoginController@superadmin');
+    Route::post('superadmin','AdminController@add');
+
 });
 
+
+Route::prefix('student')->group(function () {
+    Route::post('add','StudentController@add');//学生添加（完成）
+    Route::post('modify','StudentController@modify');//学生修改（完成）
+    Route::post('delete','StudentController@delete');//学生删除(完成)
+    Route::post('showstudent','StudentController@showstudent');//学生查询（完成）
+});//yjx
+
+
+Route::prefix('admin')->group(function () {
+    Route::post('add','AdminController@add');//管理员添加（完成）
+    Route::post('modify','AdminController@modify');//管理员改变（完成）
+    Route::post('delete','AdminController@delete');//管理员删除(完成)
+    Route::post('show','AdminController@show');//管理员查询(完成)
+});//yjx
+
+Route::prefix('equipment')->group(function () {
+    Route::post('add','Equipment\EquipmentCangController@add');//器材添加（完成）
+    Route::post('modify','Equipment\EquipmentCangController@modify');//器材修改（完成）
+    Route::post('delete','Equipment\EquipmentCangController@delete');//器材删除（完成）
+    Route::post('show','Equipment\EquipmentCangController@show');//器材查询（完成）
+});//yjx
+
+Route::prefix('equipment_borrow')->group(function () {
+    Route::post('show','Equipment\Equipment_borrowController@show');//借出器材查询(完成)
+});//yjx
+
+Route::prefix('equipment_return')->group(function () {
+    Route::post('change','Equipment\EquipmentReturnController@changestatus');//器材归还状态改变查询(完成)
+});//yjx
+
+Route::prefix('laboratory')->group(function () {
+    Route::post('show','Laboratory\LaboratroyController@show');//实验室查询(完成)
+});//yjx
+
+
+Route::prefix('superadmin')->group(function () {
+    Route::post('show','SuperadminController@show');//超管查询(完成)
+    Route::get('selectformrun','SuperAdmin\FormController@SelectFormrun'); //查看表单运行情况   (完成)
+    Route::post('selectbypeople','SuperAdmin\FormController@SelectBypeople'); //通过申请人来查看 审批中审批表单 (完成)
+
+    Route::get('selectformcomplete','SuperAdmin\FormController@SelectFormcomplete'); // 查看表单完成   (完成)
+    Route::post('selectcompletebypeople','SuperAdmin\FormController@SelectCompleteBypeople'); //通过申请人来查看 已审批表单(完成)
+
+    Route::post('stopformrun','SuperAdmin\FormController@StopFormrun'); //终止审批  (完成)
+    Route::post('passform','SuperAdmin\FormController@PassForm'); //通过审批/同意       (完成)
+
+    Route::get('selectformnum','SuperAdmin\FormController@SelectFormnum'); //查看审批中和未审批的数量  (完成)
+    Route::get('selectrunform','SuperAdmin\FormController@SelectrunForm'); //查看实验运行记录表 (完成)
+    Route::post('selectrunformbypeople','SuperAdmin\FormController@SelectrunFormbypeople'); //通过申请人来查看 查看实验运行记录表 (完成)
+
+});//yjx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * 普通管理员的所有功能实现
+ */
+Route::prefix('Admin2')->namespace('Csl')->group(function (){
+    //期末教学检查
+    Route::post("jlform","RecordController@Jlform");//记录人和编号存入
+    Route::get("qmshow","RecordController@Qmshow");//期末实验教学检查记录
+    Route::post("qmchange","RecordController@Qmchange");//期末实验教学检查记录修改
+    Route::post("qmdelete","RecordController@Qmdelete");//期末实验教学检查记录删除
+    Route::post("qmadd","RecordController@Qmadd");//期末实验教学检查记录添加
+    //待审批表单
+    Route::post("spform","ShenpiController@Spshow");//待审批表单信息展示
+    Route::post("search","ShenpiController@Search");//待审批表以申请人搜索
+    Route::post("approve1","ShenpiController@Approve1");//待审批表的审批设备借用表
+    Route::post("approve2","ShenpiController@Approve2");//待审批表的审批设备借用清单
+    Route::post("approve3","ShenpiController@Approve3");//待审批表的审批设备借用清单，同意或否决的状态存入
+    Route::post("approve4","ShenpiController@Approve4");//待审批表的审批设备借用清单，否决原因的存入
+
+    //已提交表单
+    Route::post("afterform","SubmittedController@Aftershow");//已提交表单的信息展示
+    Route::post("aftersearch","SubmittedController@Aftersearch");//已提交表单以填报人进行搜索
+    Route::post("afterlook1","SubmittedController@Afterlook1");//已提交表单设备借用的查看
+    Route::post("afterlook2","SubmittedController@Afterlook2");//已提交表单的设备清单查看
+    Route::post("afterlook3","SubmittedController@Afterlook3");//已提交表单的审批查看
+    Route::post("afterchange","SubmittedController@Afterchange");//已提交表单的审批结果的修改
+    Route::post("approve4","ShenpiController@Approve4");//待审批表的审批设备借用清单，否决原因的存入
+//    Route::post();//表单的统计
+    Route::post("tjform","NumberController@Tjform");
+    //个人信息的查看
+    Route::post("look","InformationController@look");
+    //设备仓库
+    Route::get("eshow","WarehouseController@Eshow");//仓库信息展示
+    Route::post("esearch","WarehouseController@Esearch");//搜索
+
+
+});
 
 
 
@@ -104,5 +208,7 @@ Route::prefix('student')->group(function () {
 
     Route::post('select', 'Student\StudentController@SelectStudent'); //学生负责人个人信息查看  1
 });
+
+
 
 

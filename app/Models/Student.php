@@ -10,11 +10,12 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class Student extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authenticatable
 {
     use Notifiable;
-
+    public $timestamps = false;
     public $table = 'student';
     protected $remeberTokenName = NULL;
+  //  protected $primaryKey = "student_id";
     protected $guarded = [];
-    protected $fillable = [ 'password', 'name', 'phone','email','account'];
+//    protected $fillable = [ 'password', 'name', 'phone','email','student_id'];
     protected $hidden = [
         'password',
     ];
@@ -75,6 +76,111 @@ class Student extends \Illuminate\Foundation\Auth\User implements JWTSubject,Aut
             return false;
         }
     }
+
+    /***
+     * @param $student_id
+     * @param $student_password
+     * @param $student_name
+     * @param $student_phone
+     * @param $student_email
+     * @return false
+     */
+    public static function establish( $student_id,
+                                      $student_password,
+                                      $student_name,
+                                      $student_phone,
+                                      $student_email)
+    {
+        try {
+            $res = self::insert(
+                [
+                    'student_id'=>$student_id,
+                    'student_password'=>$student_password,
+                    'student_name'=>$student_name,
+                    'student_phone'=>$student_phone,
+                    'student_email'=>$student_email,
+                ]);
+            return  $res?
+                $res :
+                false;
+        }catch (\Exception $e ){
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
+    /***
+     * yjx
+     *修改
+     * @param $student_id
+     * @param $student_password
+     * @param $student_name
+     * @param $student_phone
+     * @param $student_email
+     * @return false
+     */
+    public static function modify($student_id,$student_password,$student_name,$student_phone,$student_email){
+        try {
+            $res =Student::where('student_id',$student_id)->update(
+                [
+                    //'stuid' => $stuid,
+                    'student_password'=>$student_password,
+                    'student_name'=>$student_name,
+                    'student_phone'=>$student_phone,
+                    'student_email'=>$student_email
+                ]
+            );
+            return $res?
+                $res:
+                false;
+
+        }catch (\Exception $e){
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+
+    }
+
+    /***
+     * yjx
+     * 删除
+     * @param $student_id
+     * @return false
+     */
+    public static function delect($student_id)
+    {
+        try {
+            $res = Student::where('student_id','=',$student_id)->delete();
+            return $res ?
+                $res :
+                false;
+
+        }catch (\Exception $e){
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
+    /***
+     * yjx
+     * 查询
+     * @param $student_id
+     * @return false
+     */
+    public static function show($student_id)
+    {
+        try {
+            $res = Student::where('student_id', $student_id)->get();
+            return $res ?
+                $res :
+                false;
+
+        } catch (\Exception $e) {
+            logError('搜索错误', [$e->getMessage()]);
+            return false;
+        }
+    }
+
 
     /**
      * 查询该工号是否已经注册
