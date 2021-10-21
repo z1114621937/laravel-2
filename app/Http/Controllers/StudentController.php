@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\StudentRequest;
+use App\Http\Requests\StudentRequest1;
 use App\Models\Student;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -30,10 +31,9 @@ class StudentController extends Controller
             $student_email
 
         );
-
         return $res1?
-            json_success("操作成功",null,200):
-            json_fail("操作失败",null,100);
+            json_success("操作成功",$res1,200):
+            json_fail("操作失败",$res1,100);
 
 }
 
@@ -65,14 +65,13 @@ class StudentController extends Controller
             json_fail("操作失败",$res1,100);
     }
 
-    /**
+    /***
      * yjx
      * 删除学生
-     * @param StudentRequest $request
+     * @param StudentRequest1 $request
      * @return JsonResponse
-     *
      */
-    public function delete(StudentRequest $request)
+    public function delete(StudentRequest1 $request)
     {
 
         $student_id = $request['student_id'];
@@ -87,10 +86,10 @@ class StudentController extends Controller
     /***
      * yjx
      * 查询学生
-     * @param StudentRequest $request
+     * @param StudentRequest1 $request
      * @return JsonResponse
      */
-    public function show(StudentRequest $request){
+    public function showstudent(StudentRequest1 $request){
         $student_id = $request['student_id'];
         $res = Student::show($student_id);
 

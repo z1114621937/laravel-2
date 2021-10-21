@@ -19,7 +19,7 @@ class EquipmentReturnController extends Controller
     public function changestatus(EquipmentReturnRequest $request){
         $equipment_id=$request['equipment_id'];
         $status = $request['status'];
-
+//dd($status);
         $res = EquipmentReturn::changestatus($equipment_id,$status);
 
         return $res?

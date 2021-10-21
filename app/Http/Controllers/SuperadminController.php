@@ -24,3 +24,4 @@ class SuperadminController extends Controller
 
     }
 }
+

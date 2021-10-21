@@ -13,8 +13,9 @@ class Student extends \Illuminate\Foundation\Auth\User implements JWTSubject,Aut
     public $timestamps = false;
     public $table = 'student';
     protected $remeberTokenName = NULL;
+  //  protected $primaryKey = "student_id";
     protected $guarded = [];
-    protected $fillable = [ 'password', 'name', 'phone','email','student_id'];
+//    protected $fillable = [ 'password', 'name', 'phone','email','student_id'];
     protected $hidden = [
         'password',
     ];
@@ -77,12 +78,11 @@ class Student extends \Illuminate\Foundation\Auth\User implements JWTSubject,Aut
     }
 
     /***
-     * yjx
-     * @param $stuid
-     * @param $password
-     * @param $name
-     * @param $phone
-     * @param $email
+     * @param $student_id
+     * @param $student_password
+     * @param $student_name
+     * @param $student_phone
+     * @param $student_email
      * @return false
      */
     public static function establish( $student_id,
@@ -92,16 +92,15 @@ class Student extends \Illuminate\Foundation\Auth\User implements JWTSubject,Aut
                                       $student_email)
     {
         try {
-
-            $res = self::create(
+            $res = self::insert(
                 [
-                    'student_id' => $student_id,
+                    'student_id'=>$student_id,
                     'student_password'=>$student_password,
                     'student_name'=>$student_name,
                     'student_phone'=>$student_phone,
                     'student_email'=>$student_email,
                 ]);
-            return $res ?
+            return  $res?
                 $res :
                 false;
         }catch (\Exception $e ){

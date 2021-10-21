@@ -8,6 +8,8 @@ class EquipmentReturn extends Model
 {
     protected $table = "equipment";
     public $timestamps = true;
+    protected $primaryKey = "equipment_id";
+    protected $guarded = [];
 
 
     /***
@@ -20,11 +22,13 @@ class EquipmentReturn extends Model
     public static function changestatus($equipment_id, $status)
     {
         try {
+            //dd($status);
             $res = EquipmentReturn::where('equipment_id', '=', $equipment_id)->update(
                 [
-                    $status => 'status'
+                    'status' => $status
                 ]
             );
+
             return $res ?
                 $res :
                 false;

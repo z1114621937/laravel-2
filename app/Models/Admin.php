@@ -153,7 +153,7 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
     {
         try {
 
-            $res = self::create(
+            $res = self::insert(
                 [
                     'id' => $id,
                     'password'=>$password,

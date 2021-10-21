@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminRequest;
+use App\Http\Requests\AdminRequest1;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,8 @@ class AdminController extends Controller
             $type
         );
         return $res1?
-            json_success("操作成功",null,200):
-            json_fail("操作失败",null,100);
+            json_success("操作成功",$res1,200):
+            json_fail("操作失败",$res1,100);
 
     }
 
@@ -68,11 +69,10 @@ class AdminController extends Controller
     /***
      * yjx
      * 删除管理员
-     * @param AdminRequest $request
+     * @param AdminRequest1 $request
      * @return \Illuminate\Http\JsonResponse
-     *
      */
-    public function delete(AdminRequest $request){
+    public function delete(AdminRequest1 $request){
         $id = $request['id'];
         $res1 = Admin::delete1($id);
 
@@ -84,11 +84,11 @@ class AdminController extends Controller
 
     /***
      * yjx
-     * 查询管理员
-     * @param AdminRequest $request
+     *查询管理员
+     * @param AdminRequest1 $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(AdminRequest $request){
+    public function show(AdminRequest1 $request){
         $id = $request['id'];
         $res1 = Admin::show($id);
 

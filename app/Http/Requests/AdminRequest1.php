@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class Equipment_borrowRequest extends FormRequest
+class AdminRequest1 extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,12 @@ class Equipment_borrowRequest extends FormRequest
      *
      * @return array
      */
+
+
     public function rules()
     {
         return [
-            'form_id' => 'required',
+            'id' => 'required',
         ];
     }
 
@@ -34,5 +36,6 @@ class Equipment_borrowRequest extends FormRequest
 
         throw(new HttpResponseException(json_fail('参数错误',$validator->errors()->all(),422)));
     }
+
 
 }

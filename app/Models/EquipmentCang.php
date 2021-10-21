@@ -37,15 +37,15 @@ class EquipmentCang extends Model
     ){
 
         try {
-            $res = EquipmentCang::create(
+            $res = self::insert(
                 [
-                    $equipment_id=>'equipment_id',
-                    $equipment_name=>'equipment_name',
-                    $model=>'model',
-                    $number=>'number',
-                    $annex=>'annex',
-                    $status=>'status',
-                    $info=>'info'
+                    'equipment_id' => $equipment_id,
+                    'equipment_name'=>$equipment_name,
+                    'model'=>$model,
+                    'number'=>$number,
+                    'annex'=>$annex,
+                    'status'=>$status,
+                    'info'=>$info
                 ]
             );
             return $res?
@@ -79,13 +79,14 @@ class EquipmentCang extends Model
         try {
             $res = EquipmentCang::where('equipment_id','=',$equipment_id)->update(
                 [
-                    //$equipment_id=>'equipment_id',
-                    $equipment_name=>'equipment_name',
-                    $model=>'model',
-                    $number=>'number',
-                    $annex=>'annex',
-                    $status=>'status',
-                    $info=>'info'
+
+                    'equipment_id' => $equipment_id,
+                    'equipment_name'=>$equipment_name,
+                    'model'=>$model,
+                    'number'=>$number,
+                    'annex'=>$annex,
+                    'status'=>$status,
+                    'info'=>$info
                 ]
             );
             return $res?
@@ -105,6 +106,7 @@ class EquipmentCang extends Model
      */
     public static function delete1($equipment_id){
         try {
+            //dd($equipment_id);
             $res = EquipmentCang::where('equipment_id','=',$equipment_id)->delete();
             return $res ?
                 $res :

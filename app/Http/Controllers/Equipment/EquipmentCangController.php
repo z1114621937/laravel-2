@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Equipment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EquipmentCangRequest;
+use App\Http\Requests\EquipmentCangRequest1;
 use Illuminate\Http\Request;
 use App\Models\EquipmentCang;
 class EquipmentCangController extends Controller
 {
     /***
+     *
+     *
+     *
+     *
      * yjx
      * 增加实验器材
      * @param EquipmentCangRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function add(Request $request){
+    public function add(EquipmentCangRequest$request){
         $equipment_id = $request['equipment_id'];
         $equipment_name = $request['equipment_name'];
         $model = $request['model'];
@@ -70,13 +75,13 @@ class EquipmentCangController extends Controller
     /***
      * yjx
      * 删除器材
-     * @param EquipmentCangRequest $request
+     * @param EquipmentCangRequest1 $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(EquipmentCangRequest $request)
+    public function delete(EquipmentCangRequest1 $request)
     {
-        $equipement_id = $request['equipement_id'];
-        $res = EquipmentCang::delete1($equipement_id);
+        $equipment_id = $request['equipment_id'];
+        $res = EquipmentCang::delete1($equipment_id);
         return $res ?
             json_success("操作成功", $res, 200) :
             json_fail("操作失败", $res, 100);
@@ -86,13 +91,13 @@ class EquipmentCangController extends Controller
     /***
      * yjx
      * 查询器材
-     * @param EquipmentCangRequest $request
+     * @param EquipmentCangRequest1 $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(EquipmentCangRequest $request)
+    public function show(EquipmentCangRequest1 $request)
     {
-        $equipement_id = $request['equipement_id'];
-        $res = EquipmentCang::show($equipement_id);
+        $equipment_id = $request['equipment_id'];
+        $res = EquipmentCang::show($equipment_id);
         return $res ?
             json_success("操作成功", $res, 200) :
             json_fail("操作失败", $res, 100);
