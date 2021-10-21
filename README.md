@@ -26,7 +26,7 @@
 #### 4、重写了异常处理
     文件位置：
         App\Exceptions\Handler
-    
+
 #### 5、整合了Repositories 设计模式
         生成对应文件：
             php artisan init:model-service
@@ -37,7 +37,7 @@
         使用：
             use App\Facades\***;
             ***::getFirst()...
-        这里封装的方法可以查看:
+        这里封装的的方法可以查看:
             App\Traits\RepositoryBaseRepositoryTrait
             App\Repositories\CommonRepository
 #### 6、在Helpers中封装了很多方法，也可以自己添加方法
